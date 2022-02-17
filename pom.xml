@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>br.com.wenceslau</groupId>
+    <artifactId>hello-world-jee</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>war</packaging>
+
+    <!-- Define a versão do java usada para compilar e rodar a aplicação-->
+    <properties>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
+    </properties>
+
+    <dependencies>
+        <!-- Dependencia que permite usar as classes servlet jakarta EE-->
+        <dependency>
+            <groupId>org.eclipse.jetty</groupId>
+            <artifactId>jetty-servlet</artifactId>
+            <version>11.0.8</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <!-- Plugin para empacotar o projeto em um arquivo war. https://maven.apache.org/plugins/maven-war-plugin/-->
+            <plugin>
+                <artifactId>maven-war-plugin</artifactId>
+            </plugin>
+            <!-- Plugin que permite o maven rodar a aplicação usando o Container Jetty-->
+            <plugin>
+                <groupId>org.eclipse.jetty</groupId>
+                <artifactId>jetty-maven-plugin</artifactId>
+                <version>11.0.8</version>
+                <configuration>
+                    <webApp>
+                        <!-- O path contexto da nossa aplicação exemplo http://localhost/jee-servlet-->
+                        <contextPath>/jee-servlet</contextPath>
+                    </webApp>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
